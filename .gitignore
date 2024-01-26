@@ -2165,3 +2165,4 @@ venv/lib/python3.10/site-packages/Telethon-1.33.1.dist-info/top_level.txt
 venv/lib/python3.10/site-packages/Telethon-1.33.1.dist-info/WHEEL
 khorovod.session
 __pycache__/bot_profile.cpython-310.pyc
+khorovod.session-journal

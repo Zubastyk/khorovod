@@ -8,7 +8,7 @@ from bot_profile import *
 # запуск бота
 bot = TelegramClient('khorovod', api_id, api_hash).start(bot_token=bot_token)
 
-
+# бот начинает работу по команде /start
 @bot.on(events.NewMessage(pattern='/start'))
 async def main(event):
     await event.respond("Привет")
@@ -21,19 +21,23 @@ async def main(event):
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Список участников"
-    #ws.append(("username"))
+    # Создаем список участников
     user_list = []
     for user in all_participants:
             if user.username:
-                username = user.username
+                username = 'https://t.me/' + user.username
             else:
                 username = ""
             user_list.append(username)
-    ws.append(user_list)
+        
+    # Заносим список участников в лист
+    
+    for i, mbr in enumerate(user_list):
+         ws.append({1:i+1, 2:mbr})
+
     await event.respond("Сохраняем лист...")
     wb.save('member.xlsx')
     await event.respond("Сохраняем файл...")
-
 
 
 with bot:
